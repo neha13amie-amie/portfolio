@@ -1,0 +1,73 @@
+.resume {
+  background: var(--bg-primary);
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+.cardOuter {
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.previewIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.resumeName {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.updated {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.lines {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.line {
+  height: 8px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.downloadBtn {
+  margin-top: 0.5rem;
+}
+
+.note {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}

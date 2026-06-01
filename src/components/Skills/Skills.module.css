@@ -1,0 +1,101 @@
+.skills {
+  background: var(--bg-primary);
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.subHeading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.subHeadingSpaced {
+  margin-top: 3.5rem;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+
+.techCard {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1rem;
+}
+
+.skillIcon {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.skillName {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 6px;
+  transition: width 1s ease;
+}
+
+.skillLevel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.softGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.softCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.softIcon {
+  font-size: 1.75rem;
+  color: var(--accent);
+}
+
+.softName {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.softDesc {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .techGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
