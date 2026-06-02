@@ -2,4 +2,11 @@ node_modules
 dist
 .DS_Store
 .superpowers/
+.playwright-mcp/
 *.local
+
+# Debug screenshots (root-level PNGs)
+/*.png
+
+# Build/docs artifacts
+docs/superpowers/

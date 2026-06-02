@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio Style Ideas — Neha</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #060608; color: #fff; font-family: 'Inter', sans-serif; }
+
+  /* NAV */
+  .top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; gap: 1rem; padding: 1rem 2rem; background: rgba(6,6,8,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #ffffff15; }
+  .top-nav a { color: #ffffff88; font-size: 0.85rem; text-decoration: none; padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid #ffffff20; transition: all 0.2s; }
+  .top-nav a:hover, .top-nav a.active { color: #fff; border-color: #6366f1; background: rgba(99,102,241,0.15); }
+  .top-nav span { margin-left: auto; color: #ffffff44; font-size: 0.8rem; align-self: center; }
+
+  /* SECTIONS */
+  .idea { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 7rem 4rem 5rem; scroll-margin-top: 60px; }
+  .idea-label { font-size: 0.7rem; letter-spacing: 0.2em; font-weight: 600; margin-bottom: 1rem; opacity: 0.5; text-transform: uppercase; }
+  .idea-name { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 2rem; }
+  .idea-desc { color: #ffffff66; font-size: 0.9rem; line-height: 1.7; max-width: 500px; margin-bottom: 2.5rem; }
+  .tag { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; margin: 0.2rem; border: 1px solid; }
+  .divider { height: 1px; background: #ffffff10; margin: 0 4rem; }
+
+  /* ── IDEA 1: KINETIC EDITORIAL ── */
+  #idea1 { background: #060608; }
+  .i1-hero { position: relative; }
+  .i1-big { font-family: 'Poppins', sans-serif; font-size: clamp(5rem, 15vw, 11rem); font-weight: 900; line-height: 0.9; letter-spacing: -4px; background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .i1-sub { font-size: 1rem; color: #ffffff55; margin-top: 1.5rem; letter-spacing: 0.3em; text-transform: uppercase; }
+  .i1-pill { display: inline-block; background: linear-gradient(135deg,#6366f1,#ec4899); border-radius: 50px; padding: 0.6rem 1.5rem; font-size: 0.85rem; font-weight: 600; margin-top: 1.5rem; }
+  .i1-float { position: absolute; right: 0; top: -2rem; font-family: 'Poppins', sans-serif; font-size: 8rem; font-weight: 900; color: #ffffff06; writing-mode: vertical-rl; letter-spacing: -4px; user-select: none; }
+  .i1-row { display: flex; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
+  .i1-stat { border-left: 2px solid #6366f1; padding-left: 1rem; }
+  .i1-stat strong { display: block; font-size: 2rem; font-weight: 800; background: linear-gradient(135deg,#6366f1,#ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .i1-stat span { font-size: 0.75rem; color: #ffffff55; }
+  .i1-ticker { overflow: hidden; border-top: 1px solid #ffffff15; border-bottom: 1px solid #ffffff15; padding: 0.75rem 0; margin-top: 3rem; white-space: nowrap; }
+  .i1-ticker-inner { display: inline-block; animation: ticker 18s linear infinite; font-size: 0.85rem; color: #ffffff44; letter-spacing: 0.1em; }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── IDEA 2: DARK GLASSMORPHISM ── */
+  #idea2 { background: radial-gradient(ellipse at 20% 50%, #1a0533 0%, #060608 60%); }
+  .i2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+  .i2-glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; backdrop-filter: blur(20px); }
+  .i2-avatar { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg,#6366f1,#ec4899); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; }
+  .i2-name { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 0.5rem; }
+  .i2-role { background: linear-gradient(135deg,#6366f1,#ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; font-size: 1rem; margin-bottom: 1rem; }
+  .i2-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .i2-card { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; }
+  .i2-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg,#6366f1,#ec4899); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .i2-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .i2-card p { font-size: 0.78rem; color: #ffffff55; }
+  .i2-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+
+  /* ── IDEA 3: BOLD TYPOGRAPHIC ── */
+  #idea3 { background: #0a0a0a; }
+  .i3-eyebrow { font-size: 0.7rem; letter-spacing: 0.3em; color: #6366f1; text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; }
+  .i3-mega { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3.5rem, 10vw, 8rem); font-weight: 700; line-height: 1; margin-bottom: 1.5rem; }
+  .i3-mega em { font-style: normal; -webkit-text-stroke: 2px #6366f1; color: transparent; }
+  .i3-bio { font-size: 1.05rem; color: #ffffff66; line-height: 1.8; max-width: 520px; margin-bottom: 2rem; border-left: 3px solid #6366f1; padding-left: 1.25rem; }
+  .i3-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .i3-chip { padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; background: #ffffff0a; border: 1px solid #ffffff15; color: #ffffff88; }
+  .i3-chip.hot { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.4); color: #a5b4fc; }
+  .i3-split { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .i3-section-label { font-size: 0.65rem; letter-spacing: 0.25em; color: #ffffff33; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #ffffff10; }
+  .i3-skill-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid #ffffff08; }
+  .i3-skill-row span:first-child { font-size: 0.9rem; color: #ffffffcc; }
+  .i3-skill-row span:last-child { font-size: 0.75rem; color: #6366f1; font-weight: 700; }
+
+  /* ── IDEA 4: NEON DARK ── */
+  #idea4 { background: #03030a; }
+  .i4-glow { text-shadow: 0 0 30px rgba(99,102,241,0.8), 0 0 60px rgba(99,102,241,0.4); }
+  .i4-name { font-family: 'Poppins', sans-serif; font-size: clamp(4rem, 12vw, 9rem); font-weight: 900; line-height: 0.95; color: #fff; }
+  .i4-name span { display: block; background: linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 20px rgba(99,102,241,0.5)); }
+  .i4-line { height: 2px; background: linear-gradient(90deg, #6366f1, #ec4899, transparent); margin: 1.5rem 0; }
+  .i4-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #ffffff10; border: 1px solid #ffffff10; border-radius: 16px; overflow: hidden; margin-top: 2rem; }
+  .i4-cell { background: #03030a; padding: 1.5rem; }
+  .i4-cell-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #6366f1; margin-bottom: 0.5rem; }
+  .i4-cell-val { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; }
+  .i4-cell-sub { font-size: 0.78rem; color: #ffffff44; margin-top: 0.25rem; }
+  .i4-border-btn { display: inline-block; padding: 0.75rem 2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; background: transparent; border: 1px solid #6366f1; color: #a5b4fc; position: relative; overflow: hidden; margin-top: 1.5rem; cursor: pointer; }
+  .i4-border-btn::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg,#6366f1,#ec4899); opacity:0; transition: opacity 0.3s; }
+  .i4-border-btn:hover::before { opacity:0.15; }
+  .i4-scanline { position: fixed; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); z-index: 200; }
+</style>
+</head>
+<body>
+
+<div class="i4-scanline"></div>
+
+<nav class="top-nav">
+  <a href="#idea1" class="active">① Kinetic Editorial</a>
+  <a href="#idea2">② Glass Morphism</a>
+  <a href="#idea3">③ Bold Typographic</a>
+  <a href="#idea4">④ Neon Dark</a>
+  <span>Pick your favourite ↓</span>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- IDEA 1: KINETIC EDITORIAL -->
+<!-- ══════════════════════════════════════════ -->
+<section class="idea" id="idea1">
+  <div class="idea-label">Style 01 / 04</div>
+  <div class="idea-name" style="background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Kinetic Editorial</div>
+
+  <div class="i1-hero" style="position:relative;overflow:hidden;">
+    <div class="i1-float">CS</div>
+    <div class="i1-big">NEHA</div>
+    <div class="i1-sub">CS · Electronics · Mathematics</div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+      <span class="i1-pill">View Projects →</span>
+      <span style="border:1px solid #ffffff30;border-radius:50px;padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;">Contact Me</span>
+    </div>
+
+    <div class="i1-ticker" style="margin-top:2.5rem;">
+      <div class="i1-ticker-inner">
+        CS STUDENT &nbsp;·&nbsp; ELECTRONICS &nbsp;·&nbsp; MATHEMATICS &nbsp;·&nbsp; WEB DEVELOPMENT &nbsp;·&nbsp; UI/UX DESIGN &nbsp;·&nbsp; FIGMA &nbsp;·&nbsp; MATLAB &nbsp;·&nbsp; C PROGRAMMING &nbsp;·&nbsp; CIRCUIT DESIGN &nbsp;·&nbsp;
+        CS STUDENT &nbsp;·&nbsp; ELECTRONICS &nbsp;·&nbsp; MATHEMATICS &nbsp;·&nbsp; WEB DEVELOPMENT &nbsp;·&nbsp; UI/UX DESIGN &nbsp;·&nbsp; FIGMA &nbsp;·&nbsp; MATLAB &nbsp;·&nbsp; C PROGRAMMING &nbsp;·&nbsp; CIRCUIT DESIGN &nbsp;·&nbsp;
+      </div>
+    </div>
+
+    <div class="i1-row">
+      <div class="i1-stat"><strong>8+</strong><span>Tech Skills</span></div>
+      <div class="i1-stat"><strong>2+</strong><span>Projects</span></div>
+      <div class="i1-stat"><strong>2</strong><span>Internship Roles</span></div>
+      <div class="i1-stat"><strong>4</strong><span>Achievements</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Large kinetic text</span>
+    <span class="tag" style="color:#f9a8d4;border-color:#ec489955;">Animated ticker</span>
+    <span class="tag" style="color:#c4b5fd;border-color:#8b5cf655;">Scroll-triggered reveals</span>
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Stats on scroll</span>
+    <span class="tag" style="color:#f9a8d4;border-color:#ec489955;">Decorative math/circuit symbols</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- IDEA 2: DARK GLASSMORPHISM -->
+<!-- ══════════════════════════════════════════ -->
+<section class="idea" id="idea2" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;width:400px;height:400px;background:#6366f1;border-radius:50%;filter:blur(120px);opacity:0.12;top:-100px;left:-100px;pointer-events:none;"></div>
+  <div style="position:absolute;width:300px;height:300px;background:#ec4899;border-radius:50%;filter:blur(100px);opacity:0.1;bottom:-50px;right:10%;pointer-events:none;"></div>
+
+  <div class="idea-label">Style 02 / 04</div>
+  <div class="idea-name" style="background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Dark Glass Morphism</div>
+
+  <div class="i2-grid">
+    <div>
+      <div class="i2-avatar">N</div>
+      <div class="i2-name">Neha</div>
+      <div class="i2-role">CS · Electronics · Mathematics Student</div>
+      <p style="color:#ffffff66;font-size:0.9rem;line-height:1.7;max-width:420px;margin-bottom:1.5rem;">
+        Passionate about technology, web development, and UI/UX design. Building innovative solutions at the intersection of CS, Electronics, and Mathematics.
+      </p>
+      <div style="display:flex;gap:0.75rem;">
+        <span class="i1-pill" style="cursor:pointer;">View Projects</span>
+        <span style="border:1px solid #ffffff25;border-radius:50px;padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;">Contact</span>
+      </div>
+    </div>
+
+    <div class="i2-cards">
+      <div class="i2-glass" style="margin-bottom:0.5rem;">
+        <div style="font-size:0.7rem;letter-spacing:0.15em;color:#6366f1;margin-bottom:0.75rem;">CURRENTLY STUDYING</div>
+        <div style="font-weight:700;margin-bottom:0.25rem;">Mount Carmel College</div>
+        <div style="font-size:0.8rem;color:#ffffff55;">B.Sc. CS, Electronics & Mathematics</div>
+      </div>
+      <div class="i2-card">
+        <div class="i2-icon">⚡</div>
+        <div><h4>Electronics</h4><p>Circuit design · MATLAB · Component handling</p></div>
+      </div>
+      <div class="i2-card">
+        <div class="i2-icon">∑</div>
+        <div><h4>Mathematics</h4><p>IIOM State Rank 14 · IIOS State Rank 9</p></div>
+      </div>
+      <div class="i2-card">
+        <div class="i2-icon">{'</>'}</div>
+        <div><h4>Web & Design</h4><p>Figma · Canva · UI/UX · Digital Marketing</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Floating glass cards</span>
+    <span class="tag" style="color:#f9a8d4;border-color:#ec489955;">Glowing orbs background</span>
+    <span class="tag" style="color:#c4b5fd;border-color:#8b5cf655;">Hover tilt effects on cards</span>
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Blurred backdrop panels</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- IDEA 3: BOLD TYPOGRAPHIC -->
+<!-- ══════════════════════════════════════════ -->
+<section class="idea" id="idea3">
+  <div class="idea-label">Style 03 / 04</div>
+  <div class="idea-name" style="background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Bold Typographic</div>
+
+  <div class="i3-eyebrow">Portfolio 2025 — Bangalore, India</div>
+  <div class="i3-mega">Hello, I'm<br/><em>Neha.</em></div>
+  <p class="i3-bio">
+    A CS, Electronics &amp; Mathematics student who loves building things — from circuit boards to web apps. Olympiad medallist. Secretary. Designer. Developer.
+  </p>
+  <div class="i3-chips">
+    <span class="i3-chip hot">Web Development</span>
+    <span class="i3-chip hot">UI/UX Design</span>
+    <span class="i3-chip hot">Electronics</span>
+    <span class="i3-chip">MATLAB</span>
+    <span class="i3-chip">C Programming</span>
+    <span class="i3-chip">Figma</span>
+    <span class="i3-chip">Canva</span>
+    <span class="i3-chip">Git & GitHub</span>
+  </div>
+
+  <div class="i3-split">
+    <div>
+      <div class="i3-section-label">Selected Projects</div>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div>
+          <div style="font-size:0.65rem;color:#6366f1;letter-spacing:0.1em;margin-bottom:0.3rem;">01 — React · CSS · Chart.js</div>
+          <div style="font-size:1.3rem;font-weight:700;margin-bottom:0.3rem;">Admin Portal Dashboard</div>
+          <div style="font-size:0.85rem;color:#ffffff55;">Data visualization & user management system</div>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;color:#ec4899;letter-spacing:0.1em;margin-bottom:0.3rem;">02 — HTML · CSS · React</div>
+          <div style="font-size:1.3rem;font-weight:700;margin-bottom:0.3rem;">E-commerce Website</div>
+          <div style="font-size:0.85rem;color:#ffffff55;">Mobile-first shopping platform with checkout</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="i3-section-label">Technical Skills</div>
+      <div>
+        <div class="i3-skill-row"><span>Figma</span><span>80%</span></div>
+        <div class="i3-skill-row"><span>C Programming</span><span>75%</span></div>
+        <div class="i3-skill-row"><span>MATLAB</span><span>70%</span></div>
+        <div class="i3-skill-row"><span>Circuit Design</span><span>72%</span></div>
+        <div class="i3-skill-row"><span>Canva</span><span>88%</span></div>
+        <div class="i3-skill-row"><span>Git & GitHub</span><span>85%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Outlined stroke text</span>
+    <span class="tag" style="color:#f9a8d4;border-color:#ec489955;">Numbered projects</span>
+    <span class="tag" style="color:#c4b5fd;border-color:#8b5cf655;">Asymmetric split layout</span>
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Word-by-word reveal on scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- IDEA 4: NEON DARK -->
+<!-- ══════════════════════════════════════════ -->
+<section class="idea" id="idea4">
+  <div class="idea-label">Style 04 / 04</div>
+  <div class="idea-name" style="background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Neon Dark</div>
+
+  <div class="i4-name">
+    <span class="i4-glow">NEHA</span>
+    <div style="font-size:clamp(1rem,3vw,1.8rem);font-weight:600;color:#ffffff88;letter-spacing:0.1em;margin-top:0.5rem;font-family:'Inter',sans-serif;">CS · ELECTRONICS · MATHEMATICS</div>
+  </div>
+
+  <div class="i4-line"></div>
+
+  <div class="i4-grid">
+    <div class="i4-cell">
+      <div class="i4-cell-label">Education</div>
+      <div class="i4-cell-val">B.Sc. Triple Major</div>
+      <div class="i4-cell-sub">Mount Carmel College · 2024–2027</div>
+    </div>
+    <div class="i4-cell">
+      <div class="i4-cell-label">Top Achievement</div>
+      <div class="i4-cell-val">IIOS State Rank 9</div>
+      <div class="i4-cell-sub">India International Olympiad of Science</div>
+    </div>
+    <div class="i4-cell">
+      <div class="i4-cell-label">Role</div>
+      <div class="i4-cell-val">Tech & Electronics</div>
+      <div class="i4-cell-sub">Secretary · College Technical Club</div>
+    </div>
+    <div class="i4-cell">
+      <div class="i4-cell-label">Design Tools</div>
+      <div class="i4-cell-val">Figma · Canva</div>
+      <div class="i4-cell-sub">UI/UX & Digital Creatives</div>
+    </div>
+    <div class="i4-cell">
+      <div class="i4-cell-label">Engineering</div>
+      <div class="i4-cell-val">MATLAB · C · Circuits</div>
+      <div class="i4-cell-sub">Electronics & Programming</div>
+    </div>
+    <div class="i4-cell">
+      <div class="i4-cell-label">Internship</div>
+      <div class="i4-cell-val">Product Dev Intern</div>
+      <div class="i4-cell-sub">User Growth & Research · 2024–Present</div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+    <span class="i4-border-btn">View Projects</span>
+    <span class="i4-border-btn" style="border-color:#ec4899;color:#f9a8d4;">Download Resume</span>
+  </div>
+
+  <div style="margin-top:3rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Neon glow text</span>
+    <span class="tag" style="color:#f9a8d4;border-color:#ec489955;">CRT scanline overlay</span>
+    <span class="tag" style="color:#c4b5fd;border-color:#8b5cf655;">Grid info panels</span>
+    <span class="tag" style="color:#a5b4fc;border-color:#6366f155;">Gradient border buttons</span>
+    <span class="tag" style="color:#f9a8d4;border-color:#ec489955;">Mouse cursor glow effect</span>
+  </div>
+</section>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.idea')
+  const links = document.querySelectorAll('.top-nav a')
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'))
+        const active = document.querySelector(`.top-nav a[href="#${e.target.id}"]`)
+        if (active) active.classList.add('active')
+      }
+    })
+  }, { threshold: 0.4 })
+  sections.forEach(s => observer.observe(s))
+
+  // Smooth scroll
+  links.forEach(l => {
+    l.addEventListener('click', e => {
+      e.preventDefault()
+      document.querySelector(l.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
+    })
+  })
+</script>
+</body>
+</html>

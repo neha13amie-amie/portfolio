@@ -1,66 +1,88 @@
 .certs {
   background: var(--bg-secondary);
+  padding-bottom: 4rem;
 }
 
-.label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+.block {
+  margin-bottom: 2rem;
 }
 
-.card {
-  text-align: center;
+.blockHeading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  padding: 0 2rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Individual stack card ── */
+.stackCard {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  overflow: hidden !important;
+}
+
+.cardInner {
+  padding: 1.75rem 2.25rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.5rem;
+  min-height: 110px;
 }
 
-.iconWrap {
+.cardIcon {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
+  border-radius: 14px;
   background: var(--gradient);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  flex-shrink: 0;
 }
 
-.certName {
-  font-size: 1rem;
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cardTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
-.issuer {
-  color: var(--primary);
-  font-size: 0.875rem;
-}
-
-.date {
-  font-size: 0.8rem;
+.cardSub {
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  background: var(--bg-secondary);
-  padding: 0.2rem 0.75rem;
-  border-radius: 50px;
+  line-height: 1.5;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .cardInner {
+    padding: 1.5rem;
+    gap: 1rem;
   }
-}
 
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .cardTitle {
+    font-size: 1.05rem;
   }
 }

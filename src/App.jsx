@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Lenis from 'lenis'
 import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
@@ -26,11 +27,78 @@ function LoadingScreen({ onDone }) {
   )
 }
 
+function CursorGlow() {
+  useEffect(() => {
+    const glow = document.createElement('div')
+    glow.id = 'cursor-glow'
+    Object.assign(glow.style, {
+      position: 'fixed', pointerEvents: 'none', zIndex: '9998',
+      width: '400px', height: '400px', borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)',
+      transform: 'translate(-50%, -50%)',
+      transition: 'left 0.08s ease, top 0.08s ease',
+      left: '-999px', top: '-999px',
+    })
+    document.body.appendChild(glow)
+    const move = e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px' }
+    window.addEventListener('mousemove', move)
+    return () => { window.removeEventListener('mousemove', move); glow.remove() }
+  }, [])
+  return null
+}
+
+function ScrollProgress() {
+  const [pct, setPct] = useState(0)
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement
+      setPct((el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100)
+    }
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  return (
+    <div style={{
+      position: 'fixed', top: 0, left: 0, zIndex: 9999, height: '2px',
+      width: pct + '%', background: 'linear-gradient(90deg,#6366f1,#8b5cf6,#ec4899)',
+      transition: 'width 0.1s linear', pointerEvents: 'none',
+    }} />
+  )
+}
+
+
+function SmoothScroll() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      lerp: 0.09,
+    })
+    window.__lenis = lenis
+    let id
+    function raf(time) {
+      lenis.raf(time)
+      id = requestAnimationFrame(raf)
+    }
+    id = requestAnimationFrame(raf)
+    return () => {
+      cancelAnimationFrame(id)
+      lenis.destroy()
+      delete window.__lenis
+    }
+  }, [])
+  return null
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true)
 
   return (
     <ThemeProvider>
+      <SmoothScroll />
+      <CursorGlow />
+      <ScrollProgress />
       {loading && <LoadingScreen onDone={() => setLoading(false)} />}
       <Navbar />
       <main>

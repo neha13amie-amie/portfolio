@@ -37,38 +37,39 @@ export default function Experience() {
   return (
     <section id="experience" className={styles.experience}>
       <div className="section" ref={ref}>
-        <p className={styles.label}>MY JOURNEY</p>
+        <span className="section-label">MY JOURNEY</span>
         <h2 className="section-title gradient-text" data-reveal data-delay="1">Experience</h2>
         <p className="section-subtitle" data-reveal data-delay="2">
           Roles where I've grown as a collaborator, thinker, and builder.
         </p>
 
-        <div className={styles.timeline}>
+        <div className={styles.list}>
           {EXPERIENCE.map((exp, i) => (
-            <div key={exp.role} className={styles.entry} data-reveal data-delay={String(i + 2)}>
-              <div className={styles.dot} />
-              <div className="card-wrapper" style={{flex:1}}>
-                <div className="card-inner">
-                  <div className={styles.header}>
-                    <div>
-                      <h3 className={styles.role}>{exp.role}</h3>
-                      <p className={styles.org}>{exp.org}</p>
-                    </div>
-                    <span className={styles.period}>{exp.period}</span>
-                  </div>
-                  <ul className={styles.list}>
-                    {exp.responsibilities.map(r => <li key={r}>{r}</li>)}
-                  </ul>
-                  <div className={styles.skillTags}>
-                    {exp.skills.map(s => (
-                      <span key={s} className={styles.skillTag}>{s}</span>
-                    ))}
-                  </div>
-                </div>
+            <div
+              key={exp.role}
+              className={`${styles.entry} ${i === 0 ? styles.firstEntry : ''}`}
+              data-reveal
+              data-delay={String(i + 3)}
+            >
+              <div className={styles.topRow}>
+                <h3 className={styles.role}>{exp.role}</h3>
+                <span className={styles.period}>{exp.period}</span>
+              </div>
+              <p className={styles.org}>{exp.org}</p>
+
+              <ul className={styles.responsibilities}>
+                {exp.responsibilities.map(r => (
+                  <li key={r} className={styles.responsibility}>{r}</li>
+                ))}
+              </ul>
+
+              <div className={styles.skillTags}>
+                {exp.skills.map(s => (
+                  <span key={s} className={styles.skillTag}>{s}</span>
+                ))}
               </div>
             </div>
           ))}
-          <div className={styles.line} />
         </div>
       </div>
     </section>

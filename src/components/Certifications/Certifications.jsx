@@ -1,39 +1,71 @@
-import { MdVerified } from 'react-icons/md'
+import { MdVerified, MdEmojiEvents, MdMilitaryTech, MdStar } from 'react-icons/md'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
+import ScrollStack, { ScrollStackItem } from '../Projects/ScrollStack'
 import styles from './Certifications.module.css'
 
 const CERTS = [
-  { name: 'Your Certification Name', issuer: 'Issuing Organization', date: 'Month Year' },
-  { name: 'Your Certification Name', issuer: 'Issuing Organization', date: 'Month Year' },
-  { name: 'Your Certification Name', issuer: 'Issuing Organization', date: 'Month Year' },
+  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.03))' },
+  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03))' },
+  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(236,72,153,0.03))' },
 ]
+
+const ACHIEVEMENTS = [
+  { icon: <MdEmojiEvents size={26} />, title: 'IIOS State Rank 9', sub: 'India International Olympiad of Science', accent: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.03))' },
+  { icon: <MdEmojiEvents size={26} />, title: 'IIOM State Rank 14', sub: 'India International Olympiad of Mathematics', accent: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03))' },
+  { icon: <MdMilitaryTech size={26} />, title: 'NCC A Certificate', sub: 'National Cadet Corps — A Certificate (Cadet)', accent: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(236,72,153,0.03))' },
+  { icon: <MdStar size={26} />, title: 'Throwball Second Runner Up', sub: 'Inter-Class Throwball Match', accent: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.06))' },
+]
+
+function StackList({ items }) {
+  return (
+    <ScrollStack
+      useWindowScroll={true}
+      itemDistance={200}
+      itemScale={0.03}
+      itemStackDistance={30}
+      stackPosition="20%"
+      scaleEndPosition="10%"
+      baseScale={0.85}
+      blurAmount={0}
+      rotationAmount={0}
+    >
+      {items.map((item, i) => (
+        <ScrollStackItem key={i} itemClassName={styles.stackCard}>
+          <div className={styles.cardInner} style={{ background: item.accent }}>
+            <span className={styles.cardIcon}>{item.icon}</span>
+            <div className={styles.cardText}>
+              <h4 className={styles.cardTitle}>{item.title}</h4>
+              <p className={styles.cardSub}>{item.sub}</p>
+            </div>
+          </div>
+        </ScrollStackItem>
+      ))}
+    </ScrollStack>
+  )
+}
 
 export default function Certifications() {
   const ref = useScrollReveal()
 
   return (
     <section id="certifications" className={styles.certs}>
-      <div className="section" ref={ref}>
-        <p className={styles.label}>CREDENTIALS</p>
-        <h2 className="section-title gradient-text" data-reveal data-delay="1">Certifications</h2>
-        <p className="section-subtitle" data-reveal data-delay="2">
-          Courses and certifications that have shaped my skills.
-        </p>
+      <div className={styles.header} ref={ref}>
+        <span className="section-label">CREDENTIALS &amp; ACHIEVEMENTS</span>
+        <h2 className="section-title gradient-text" data-reveal data-delay="1">
+          Certifications &amp; Achievements
+        </h2>
+      </div>
 
-        <div className={styles.grid}>
-          {CERTS.map((cert, i) => (
-            <div key={i} className="card-wrapper" data-reveal data-delay={String(i + 2)}>
-              <div className={`card-inner ${styles.card}`}>
-                <div className={styles.iconWrap}>
-                  <MdVerified size={32} />
-                </div>
-                <h3 className={styles.certName}>{cert.name}</h3>
-                <p className={styles.issuer}>{cert.issuer}</p>
-                <span className={styles.date}>{cert.date}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Certifications */}
+      <div className={styles.block}>
+        <h3 className={styles.blockHeading}>Certifications</h3>
+        <StackList items={CERTS} />
+      </div>
+
+      {/* Achievements */}
+      <div className={styles.block}>
+        <h3 className={styles.blockHeading}>Achievements</h3>
+        <StackList items={ACHIEVEMENTS} />
       </div>
     </section>
   )

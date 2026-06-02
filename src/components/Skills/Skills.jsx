@@ -1,91 +1,94 @@
-import { useEffect, useRef } from 'react'
 import {
-  FiCode, FiLayers, FiZap, FiBox, FiPenTool, FiDatabase, FiGithub,
-  FiMessageSquare, FiUsers, FiTarget, FiStar
+  FiPenTool, FiDatabase, FiGithub,
+  FiMessageSquare, FiUsers, FiTarget, FiStar, FiCpu, FiTool, FiGrid,
+  FiMonitor, FiBarChart2
 } from 'react-icons/fi'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
+import ScrollStack, { ScrollStackItem } from '../Projects/ScrollStack'
 import styles from './Skills.module.css'
 
-const TECH_SKILLS = [
-  { icon: <FiCode />, name: 'HTML', level: 90 },
-  { icon: <FiLayers />, name: 'CSS', level: 85 },
-  { icon: <FiZap />, name: 'JavaScript', level: 80 },
-  { icon: <FiBox />, name: 'React', level: 75 },
-  { icon: <FiPenTool />, name: 'Figma', level: 80 },
-  { icon: <FiDatabase />, name: 'SQL', level: 70 },
-  { icon: <FiGithub />, name: 'Git & GitHub', level: 85 },
+const ALL_SKILLS = [
+  {
+    category: 'Design & Tools',
+    items: [
+      { icon: <FiPenTool />, name: 'Figma', desc: 'UI/UX wireframing, prototyping and design systems' },
+      { icon: <FiGrid />, name: 'Canva', desc: 'Digital creatives, social media graphics, and visual content' },
+      { icon: <FiMonitor />, name: 'MS Office / Excel', desc: 'Data analysis, reporting, presentations, and spreadsheets' },
+    ],
+    accent: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.03))',
+  },
+  {
+    category: 'Engineering & Science',
+    items: [
+      { icon: <FiCpu />, name: 'C Programming', desc: 'Algorithms, data structures, and low-level problem solving' },
+      { icon: <FiBarChart2 />, name: 'MATLAB', desc: 'Mathematical modelling, simulations, and signal analysis' },
+      { icon: <FiTool />, name: 'Circuit Design', desc: 'Component handling, troubleshooting, and circuit assembly' },
+    ],
+    accent: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03))',
+  },
+  {
+    category: 'Data & Version Control',
+    items: [
+      { icon: <FiDatabase />, name: 'SQL / DBMS', desc: 'Relational databases, queries, and data management' },
+      { icon: <FiGithub />, name: 'Git & GitHub', desc: 'Version control, branching, and collaborative workflows' },
+    ],
+    accent: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(236,72,153,0.03))',
+  },
+  {
+    category: 'Soft Skills',
+    items: [
+      { icon: <FiMessageSquare />, name: 'Communication', desc: 'Fluent in English, Hindi, Kannada & Tamil — clear verbal and written' },
+      { icon: <FiUsers />, name: 'Teamwork', desc: 'Collaborative mindset with cross-functional experience' },
+      { icon: <FiTarget />, name: 'Problem Solving', desc: 'Analytical approach to breaking down complex challenges' },
+      { icon: <FiStar />, name: 'Leadership', desc: 'Organized and motivated teams as Tech & Electronics Secretary' },
+    ],
+    accent: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(236,72,153,0.08))',
+  },
 ]
-
-const SOFT_SKILLS = [
-  { icon: <FiMessageSquare />, name: 'Communication', desc: 'Clear verbal and written communication across teams' },
-  { icon: <FiUsers />, name: 'Teamwork', desc: 'Collaborative mindset with cross-functional experience' },
-  { icon: <FiTarget />, name: 'Problem Solving', desc: 'Analytical approach to breaking down complex challenges' },
-  { icon: <FiStar />, name: 'Leadership', desc: 'Organized and motivated teams as Tech & Electronics Secretary' },
-]
-
-function SkillCard({ icon, name, level }) {
-  const barRef = useRef(null)
-
-  useEffect(() => {
-    const bar = barRef.current
-    if (!bar) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          bar.style.width = `${level}%`
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.5 }
-    )
-    observer.observe(bar.parentElement)
-    return () => observer.disconnect()
-  }, [level])
-
-  return (
-    <div className="card-wrapper">
-      <div className={`card-inner ${styles.techCard}`}>
-        <div className={styles.skillIcon}>{icon}</div>
-        <div className={styles.skillName}>{name}</div>
-        <div className={styles.progressTrack}>
-          <div ref={barRef} className={styles.progressBar} style={{ width: 0 }} />
-        </div>
-        <span className={styles.skillLevel}>{level}%</span>
-      </div>
-    </div>
-  )
-}
 
 export default function Skills() {
   const ref = useScrollReveal()
 
   return (
     <section id="skills" className={styles.skills}>
-      <div className="section" ref={ref}>
-        <p className={styles.label}>WHAT I KNOW</p>
+      <div className={styles.header} ref={ref}>
+        <span className="section-label">WHAT I KNOW</span>
         <h2 className="section-title gradient-text" data-reveal data-delay="1">My Skills</h2>
-        <p className="section-subtitle" data-reveal data-delay="2">
-          A blend of technical expertise and soft skills built through study and experience.
-        </p>
+      </div>
 
-        <h3 className={styles.subHeading} data-reveal data-delay="2">Technical Skills</h3>
-        <div className={styles.techGrid} data-reveal data-delay="3">
-          {TECH_SKILLS.map(s => <SkillCard key={s.name} {...s} />)}
-        </div>
-
-        <h3 className={`${styles.subHeading} ${styles.subHeadingSpaced}`} data-reveal data-delay="2">Soft Skills</h3>
-        <div className={styles.softGrid} data-reveal data-delay="3">
-          {SOFT_SKILLS.map(s => (
-            <div key={s.name} className="card-wrapper">
-              <div className={`card-inner ${styles.softCard}`}>
-                <div className={styles.softIcon}>{s.icon}</div>
-                <h4 className={styles.softName}>{s.name}</h4>
-                <p className={styles.softDesc}>{s.desc}</p>
+      <ScrollStack
+        useWindowScroll={true}
+        itemDistance={200}
+        itemScale={0.03}
+        itemStackDistance={30}
+        stackPosition="20%"
+        scaleEndPosition="10%"
+        baseScale={0.85}
+        blurAmount={0}
+        rotationAmount={0}
+      >
+        {ALL_SKILLS.map((group, i) => (
+          <ScrollStackItem key={group.category} itemClassName={styles.stackCard}>
+            <div className={styles.cardInner} style={{ background: group.accent }}>
+              <div className={styles.cardTop}>
+                <span className={styles.cardNum}>0{i + 1}</span>
+                <h3 className={styles.cardCategory}>{group.category}</h3>
+              </div>
+              <div className={styles.skillGrid}>
+                {group.items.map(skill => (
+                  <div key={skill.name} className={styles.skillItem}>
+                    <div className={styles.skillHeader}>
+                      <span className={styles.skillIcon}>{skill.icon}</span>
+                      <span className={styles.skillName}>{skill.name}</span>
+                    </div>
+                    <p className={styles.skillDesc}>{skill.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+          </ScrollStackItem>
+        ))}
+      </ScrollStack>
     </section>
   )
 }

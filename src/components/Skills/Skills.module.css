@@ -1,101 +1,107 @@
 .skills {
   background: var(--bg-primary);
+  padding-bottom: 4rem;
 }
 
-.label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
 }
 
-.subHeading {
+/* ── Stack card shell ── */
+.stackCard {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  overflow: hidden !important;
+}
+
+.cardInner {
+  padding: 2.5rem 3rem;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cardNum {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--primary);
+  opacity: 0.3;
+  line-height: 1;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.cardCategory {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
   color: var(--text-primary);
 }
 
-.subHeadingSpaced {
-  margin-top: 3.5rem;
-}
-
-.techGrid {
+.skillGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
 
-.techCard {
-  text-align: center;
+.skillItem {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skillHeader {
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 1.5rem 1rem;
+  gap: 0.5rem;
 }
 
 .skillIcon {
-  font-size: 2rem;
+  font-size: 1rem;
   color: var(--primary);
+  display: flex;
+  flex-shrink: 0;
 }
 
 .skillName {
-  font-weight: 600;
   font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.progressTrack {
-  width: 100%;
-  height: 6px;
-  background: var(--bg-secondary);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.progressBar {
-  height: 100%;
-  background: var(--gradient);
-  border-radius: 6px;
-  transition: width 1s ease;
-}
-
-.skillLevel {
+.skillDesc {
   font-size: 0.8rem;
   color: var(--text-secondary);
-}
-
-.softGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-
-.softCard {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.softIcon {
-  font-size: 1.75rem;
-  color: var(--accent);
-}
-
-.softName {
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.softDesc {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
   line-height: 1.6;
+  padding-left: 1.5rem;
 }
 
-@media (max-width: 480px) {
-  .techGrid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 768px) {
+  .cardInner {
+    padding: 2rem 1.5rem;
+  }
+
+  .skillGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
