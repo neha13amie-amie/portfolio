@@ -9,7 +9,7 @@ const PROJECTS = [
     title: 'Admin Portal Dashboard',
     description: 'A full-featured admin dashboard with data visualization, user management, and a fully responsive layout. Designed to streamline business operations.',
     tech: ['React', 'CSS', 'JavaScript', 'Chart.js'],
-    demo: '#',
+    demo: 'https://fruitopia-nine.vercel.app/admin/login',
     github: '#',
     accent: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(99,102,241,0.05))',
   },
