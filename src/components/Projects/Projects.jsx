@@ -11,7 +11,7 @@ const PROJECTS = [
     tech: ['React', 'CSS', 'JavaScript', 'Chart.js'],
     demo: 'https://fruitopia-nine.vercel.app/admin/login',
     github: '#',
-    accent: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(99,102,241,0.05))',
+    accent: 'linear-gradient(135deg, rgba(96, 73, 90,0.15), rgba(96, 73, 90,0.05))',
   },
   {
     num: '02',
@@ -20,7 +20,7 @@ const PROJECTS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'React'],
     demo: 'https://fruitopia-nine.vercel.app/',
     github: '#',
-    accent: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(236,72,153,0.05))',
+    accent: 'linear-gradient(135deg, rgba(63, 50, 68,0.15), rgba(47, 34, 53,0.05))',
   },
 ]
 

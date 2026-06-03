@@ -1,28 +1,31 @@
-/* ── Dark mode tokens (default) ── */
+/* ── Earthy dark palette (default) ──
+   d8d4f2 lavender · c4b2bc mauve · a29587 taupe · 846c5b brown · 332e3c plum */
+/* ── Sage & plum palette ──
+   bfc3ba sage · a9aca9 gray-sage · 60495a muted plum · 3f3244 dark plum · 2f2235 darkest plum */
 :root {
   font-family: 'Inter', sans-serif;
-  --primary: #6366f1;
-  --secondary: #8b5cf6;
-  --accent: #ec4899;
-  --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #0f0f1a;
-  --bg-card: #1a1a2e;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --border: rgba(99, 102, 241, 0.25);
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+  --primary: #c9a9c4;
+  --secondary: #b2c7d8;
+  --accent: #e6dce8;
+  --gradient: linear-gradient(135deg, #e6dce8, #c9a9c4, #b2c7d8);
+  --bg-primary: transparent;
+  --bg-secondary: rgba(255, 255, 255, 0.04);
+  --bg-card: #2a1f30;
+  --text-primary: #f3eef2;
+  --text-secondary: #c9bdc8;
+  --border: rgba(243, 238, 242, 0.18);
+  --shadow-glow: 0 0 30px rgba(96, 73, 90, 0.35);
 }
 
-/* ── Light mode tokens ── */
+/* ── Light mode tokens (unused — theme is locked to dark) ── */
 [data-theme="light"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
+  --bg-primary: #efefef;
+  --bg-secondary: #d8d8d8;
   --bg-card: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --border: rgba(99, 102, 241, 0.2);
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.15);
+  --text-primary: #191919;
+  --text-secondary: #d8d8d8;
+  --border: rgba(51, 46, 60, 0.2);
+  --shadow-glow: 0 0 30px rgba(132, 108, 91, 0.15);
 }
 
 /* ── Reset ── */
@@ -37,10 +40,10 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: transparent;
   color: var(--text-primary);
   line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,7 +62,7 @@ img {
 
 /* ── Shared utilities ── */
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899, #8b5cf6, #6366f1);
+  background: linear-gradient(135deg, #efefef, #d8d8d8, #a0a0a0, #d8d8d8, #efefef);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -95,7 +98,7 @@ img {
   left: 0;
   height: 3px;
   width: 0;
-  background: linear-gradient(90deg, #6366f1, #ec4899);
+  background: linear-gradient(90deg, #efefef, #a0a0a0);
   border-radius: 2px;
   transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
 }
@@ -110,45 +113,93 @@ img {
   margin-bottom: 3rem;
 }
 
-.gradient-btn {
-  background: var(--gradient);
-  color: #fff;
+/* ── Glowing CTA buttons (rotating conic-gradient border) ── */
+@property --glow-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes glow-spin {
+  to { --glow-angle: 360deg; }
+}
+
+.gradient-btn,
+.outline-btn {
+  position: relative;
+  z-index: 0;
   border: none;
-  padding: 0.75rem 1.75rem;
+  padding: 0.85rem 1.85rem;
   border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  isolation: isolate;
 }
 
-.gradient-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+/* Rotating conic-gradient glow ring */
+.gradient-btn::before,
+.outline-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -2;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--glow-angle),
+    transparent 0%,
+    #e6dce8 10%,
+    #c9a9c4 25%,
+    transparent 40%,
+    transparent 60%,
+    #b2c7d8 75%,
+    #c9a9c4 90%,
+    transparent 100%
+  );
+  animation: glow-spin 5s linear infinite;
+  opacity: 0.85;
+  filter: blur(2px);
+}
+
+/* Solid inner face that sits over the glow */
+.gradient-btn::after,
+.outline-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.gradient-btn {
+  color: #2f2235;
+}
+
+.gradient-btn::after {
+  background: var(--gradient);
 }
 
 .outline-btn {
-  background: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--primary);
-  padding: 0.75rem 1.75rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+  color: #2f2235;
 }
 
+.outline-btn::after {
+  background: var(--gradient);
+}
+
+.gradient-btn:hover,
 .outline-btn:hover {
-  background: var(--primary);
-  color: #fff;
   transform: translateY(-2px);
+}
+
+.gradient-btn:hover::before,
+.outline-btn:hover::before {
+  animation-duration: 2s;
+  opacity: 1;
 }
 
 /* ── Gradient border card wrapper ── */

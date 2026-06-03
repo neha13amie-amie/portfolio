@@ -4,16 +4,16 @@ import ScrollStack, { ScrollStackItem } from '../Projects/ScrollStack'
 import styles from './Certifications.module.css'
 
 const CERTS = [
-  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.03))' },
-  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03))' },
-  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(236,72,153,0.03))' },
+  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(96, 73, 90,0.12), rgba(96, 73, 90,0.03))' },
+  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(63, 50, 68,0.12), rgba(63, 50, 68,0.03))' },
+  { icon: <MdVerified size={26} />, title: 'Your Certification Name', sub: 'Issuing Organization · Month Year', accent: 'linear-gradient(135deg, rgba(47, 34, 53,0.12), rgba(47, 34, 53,0.03))' },
 ]
 
 const ACHIEVEMENTS = [
-  { icon: <MdEmojiEvents size={26} />, title: 'IIOS State Rank 9', sub: 'India International Olympiad of Science', accent: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.03))' },
-  { icon: <MdEmojiEvents size={26} />, title: 'IIOM State Rank 14', sub: 'India International Olympiad of Mathematics', accent: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03))' },
-  { icon: <MdMilitaryTech size={26} />, title: 'NCC A Certificate', sub: 'National Cadet Corps — A Certificate (Cadet)', accent: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(236,72,153,0.03))' },
-  { icon: <MdStar size={26} />, title: 'Throwball Second Runner Up', sub: 'Inter-Class Throwball Match', accent: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.06))' },
+  { icon: <MdEmojiEvents size={26} />, title: 'IIOS State Rank 9', sub: 'India International Olympiad of Science', accent: 'linear-gradient(135deg, rgba(96, 73, 90,0.12), rgba(96, 73, 90,0.03))' },
+  { icon: <MdEmojiEvents size={26} />, title: 'IIOM State Rank 14', sub: 'India International Olympiad of Mathematics', accent: 'linear-gradient(135deg, rgba(63, 50, 68,0.12), rgba(63, 50, 68,0.03))' },
+  { icon: <MdMilitaryTech size={26} />, title: 'NCC A Certificate', sub: 'National Cadet Corps — A Certificate (Cadet)', accent: 'linear-gradient(135deg, rgba(47, 34, 53,0.12), rgba(47, 34, 53,0.03))' },
+  { icon: <MdStar size={26} />, title: 'Throwball Second Runner Up', sub: 'Inter-Class Throwball Match', accent: 'linear-gradient(135deg, rgba(96, 73, 90,0.1), rgba(47, 34, 53,0.06))' },
 ]
 
 function StackList({ items }) {

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FiMail, FiGithub, FiMapPin, FiSend } from 'react-icons/fi'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
+import { supabase } from '../../lib/supabase'
 import styles from './Contact.module.css'
 
 const CONTACT_INFO = [
@@ -13,9 +14,29 @@ export default function Contact() {
   const ref = useScrollReveal()
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('')
+
+    if (!supabase) {
+      setError('Form is not configured yet. Please email me directly.')
+      return
+    }
+
+    setSending(true)
+    const { error: insertError } = await supabase
+      .from('messages')
+      .insert([{ name: form.name, email: form.email, message: form.message }])
+    setSending(false)
+
+    if (insertError) {
+      setError('Something went wrong. Please try again or email me directly.')
+      return
+    }
+
     setSent(true)
     setForm({ name: '', email: '', message: '' })
   }
@@ -101,8 +122,9 @@ export default function Contact() {
                       required
                     />
                   </div>
-                  <button type="submit" className={`gradient-btn ${styles.submitBtn}`}>
-                    <FiSend /> Send Message
+                  {error && <p className={styles.errorMsg}>{error}</p>}
+                  <button type="submit" className={`gradient-btn ${styles.submitBtn}`} disabled={sending}>
+                    <FiSend /> {sending ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}

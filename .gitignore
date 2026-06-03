@@ -5,6 +5,10 @@ dist
 .playwright-mcp/
 *.local
 
+# Environment variables (Supabase keys)
+.env
+.env.*
+
 # Debug screenshots (root-level PNGs)
 /*.png
 

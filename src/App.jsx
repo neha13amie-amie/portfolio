@@ -12,6 +12,7 @@ import Resume from './components/Resume/Resume'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 import BackToTop from './components/BackToTop/BackToTop'
+import { GradientBackground } from './components/GradientBackground/GradientBackground'
 import styles from './App.module.css'
 
 function LoadingScreen({ onDone }) {
@@ -34,7 +35,7 @@ function CursorGlow() {
     Object.assign(glow.style, {
       position: 'fixed', pointerEvents: 'none', zIndex: '9998',
       width: '400px', height: '400px', borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)',
+      background: 'radial-gradient(circle, rgba(96, 73, 90,0.12) 0%, transparent 70%)',
       transform: 'translate(-50%, -50%)',
       transition: 'left 0.08s ease, top 0.08s ease',
       left: '-999px', top: '-999px',
@@ -60,7 +61,7 @@ function ScrollProgress() {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, zIndex: 9999, height: '2px',
-      width: pct + '%', background: 'linear-gradient(90deg,#6366f1,#8b5cf6,#ec4899)',
+      width: pct + '%', background: 'linear-gradient(90deg,#3f3244,#2f2235,#bfc3ba)',
       transition: 'width 0.1s linear', pointerEvents: 'none',
     }} />
   )
@@ -70,10 +71,11 @@ function ScrollProgress() {
 function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.8,
       easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      lerp: 0.09,
+      lerp: 0.05,
+      wheelMultiplier: 0.8,
     })
     window.__lenis = lenis
     let id
@@ -96,6 +98,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
+      <GradientBackground />
       <SmoothScroll />
       <CursorGlow />
       <ScrollProgress />

@@ -15,7 +15,7 @@ const ALL_SKILLS = [
       { icon: <FiGrid />, name: 'Canva', desc: 'Digital creatives, social media graphics, and visual content' },
       { icon: <FiMonitor />, name: 'MS Office / Excel', desc: 'Data analysis, reporting, presentations, and spreadsheets' },
     ],
-    accent: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.03))',
+    accent: 'linear-gradient(135deg, rgba(96, 73, 90,0.12), rgba(96, 73, 90,0.03))',
   },
   {
     category: 'Engineering & Science',
@@ -24,7 +24,7 @@ const ALL_SKILLS = [
       { icon: <FiBarChart2 />, name: 'MATLAB', desc: 'Mathematical modelling, simulations, and signal analysis' },
       { icon: <FiTool />, name: 'Circuit Design', desc: 'Component handling, troubleshooting, and circuit assembly' },
     ],
-    accent: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03))',
+    accent: 'linear-gradient(135deg, rgba(63, 50, 68,0.12), rgba(63, 50, 68,0.03))',
   },
   {
     category: 'Data & Version Control',
@@ -32,7 +32,7 @@ const ALL_SKILLS = [
       { icon: <FiDatabase />, name: 'SQL / DBMS', desc: 'Relational databases, queries, and data management' },
       { icon: <FiGithub />, name: 'Git & GitHub', desc: 'Version control, branching, and collaborative workflows' },
     ],
-    accent: 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(236,72,153,0.03))',
+    accent: 'linear-gradient(135deg, rgba(47, 34, 53,0.12), rgba(47, 34, 53,0.03))',
   },
   {
     category: 'Soft Skills',
@@ -42,7 +42,7 @@ const ALL_SKILLS = [
       { icon: <FiTarget />, name: 'Problem Solving', desc: 'Analytical approach to breaking down complex challenges' },
       { icon: <FiStar />, name: 'Leadership', desc: 'Organized and motivated teams as Tech & Electronics Secretary' },
     ],
-    accent: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(236,72,153,0.08))',
+    accent: 'linear-gradient(135deg, rgba(96, 73, 90,0.08), rgba(47, 34, 53,0.08))',
   },
 ]
 

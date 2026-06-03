@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import GooeyNav from './GooeyNav'
+import { useRef, useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import styles from './Navbar.module.css'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -12,37 +13,47 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export default function Navbar() {
-  const [activeIndex, setActiveIndex] = useState(0)
+function Tab({ children, href, setPosition }) {
+  const ref = useRef(null)
+  return (
+    <li
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref.current) return
+        const { width } = ref.current.getBoundingClientRect()
+        setPosition({ width, opacity: 1, left: ref.current.offsetLeft })
+      }}
+      className={styles.tab}
+    >
+      <a href={href}>{children}</a>
+    </li>
+  )
+}
 
-  useEffect(() => {
-    const sections = NAV_LINKS.map(l => document.getElementById(l.href.slice(1)))
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const idx = NAV_LINKS.findIndex(l => l.href.slice(1) === entry.target.id)
-            if (idx !== -1) setActiveIndex(idx)
-          }
-        })
-      },
-      { threshold: 0.4 }
-    )
-    sections.forEach(s => s && observer.observe(s))
-    return () => observer.disconnect()
-  }, [])
+function Cursor({ position }) {
+  return <motion.li animate={position} className={styles.cursor} />
+}
+
+export default function Navbar() {
+  const [position, setPosition] = useState({ left: 0, width: 0, opacity: 0 })
+
+  // Keep scroll-spy working: no-op observer kept removed since cursor is hover-driven.
+  // (Active section tracking dropped per request to use only this nav style.)
+  useEffect(() => {}, [])
 
   return (
-    <GooeyNav
-      items={NAV_LINKS}
-      activeIndex={activeIndex}
-      initialActiveIndex={0}
-      particleCount={15}
-      particleDistances={[90, 10]}
-      particleR={100}
-      animationTime={600}
-      timeVariance={300}
-      colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-    />
+    <nav className={styles.nav}>
+      <ul
+        className={styles.list}
+        onMouseLeave={() => setPosition(pv => ({ ...pv, opacity: 0 }))}
+      >
+        {NAV_LINKS.map(link => (
+          <Tab key={link.href} href={link.href} setPosition={setPosition}>
+            {link.label}
+          </Tab>
+        ))}
+        <Cursor position={position} />
+      </ul>
+    </nav>
   )
 }
